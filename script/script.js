@@ -8,13 +8,19 @@
     const otherSwordBtn = document.getElementById('otherSelected')
     const diamondbtn = document.getElementById('diamondSelected')
     const closeBtn = document.getElementById('exit_button')
+    const closeModal = document.getElementById('displayModal')
 
+    
     button.addEventListener('click', function () {
         document.getElementById('displayModal').style.display = 'block'
     })
 
     closeBtn.addEventListener('click', function () {
         document.getElementById('displayModal').style.display = 'none'
+    })
+
+    closeModal.addEventListener('click' , function() {
+        closeModal.style.display = 'none'
     })
 
 
