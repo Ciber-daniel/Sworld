@@ -1,88 +1,86 @@
-(function () {
-    const proSword = './image/pro.png'
-    const masterSword = './image/master.png'
-    const diamontSword = './image/diamont'
-    const worldContainer = document.getElementById('swordcontainer')
-    const button = document.getElementById('button')
-    const masterBtn = document.getElementById('masterSelected')
-    const otherSwordBtn = document.getElementById('otherSelected')
-    const diamondbtn = document.getElementById('diamondSelected')
-    const closeBtn = document.getElementById('exit_button')
-    const closeModal = document.getElementById('displayModal')
+class SwordSelector {
 
+     modal = document.getElementById('displayModal')
+     diamontSword = './image/diamont'
+     masterSword = '"./image/master.png"'
+     proSword = './image/pro.png'
+
+constructor() {
+    this.addListeners()
+    this.otrometodo()
+    this.listeners = this.listeners
+    this.display = this.display.bind(this)
+    this.listenersModal = this.listenersModal.bind(this)
+}
+
+    listenersModal = () => {
+        this.modal.style.display = 'block'
+        console.log(this.diamontSword)
+     
+    }
     
-    button.addEventListener('click', function () {
-        document.getElementById('displayModal').style.display = 'block'
-    })
 
-    closeBtn.addEventListener('click', function () {
-        document.getElementById('displayModal').style.display = 'none'
-    })
+    otrometodo() {
+        const diamondbtn = document.getElementById('diamondSelected')
+        const otherSwordBtn = document.getElementById('otherSelected')
+        const masterBtn = document.getElementById('masterSelected')
+       
 
-    closeModal.addEventListener('click' , function() {
-        closeModal.style.display = 'none'
-    })
+         this.listeners(diamondbtn,this.diamontSword)
+         this.listeners(otherSwordBtn,this.proSword)
+         this.listeners(masterBtn,this.masterSword)
+        
+    }
+
+    addListeners() {    
+        const button = document.getElementById('button')
+        const closeBtn = document.getElementById('exit_button')
+        button.addEventListener('click', this.listenersModal)
+     
+    }
+
+    display() {
+         this.modal.style.display = 'none'
+    }
+
+    listeners(btn,image) {
+            btn.addEventListener('click', () => {
+                const swordcontainer = document.getElementById('swordcontainer')
+                swordcontainer.innerHTML = `<div id="swordcontainer">
+                <h2>Esta es tu espada ideal</h2>
+                <div id="swordSilhouette" class="image_container">
+                    <img src="${image}" alt="">
+                </div>
+                <div class="btn-position" id="btn">           
+                    <button class="btn_style" id="Rbutton">
+                        Volver a elegir
+                    </button>
+                </div>`    
+       
+            
+               this.display()
+               const reload = document.getElementById('Rbutton')
+               reload.addEventListener('click', () => {
+               window.location.reload();
+               })
+            }) 
+    }
+         }
+    
+   
 
 
-    masterBtn.addEventListener('click', function () {
-        worldContainer.innerHTML = `<div id="swordcontainer">
-                  <h2>Esta es tu espada ideal</h2>
-                  <div id="swordSilhouette" class="image_container">
-                      <img src="${masterSword}" alt="">
-                  </div>
-                  <div class="btn-position" id="btn">           
-                      <button class="btn_style" id="Rbutton">
-                          Volver a elegir
-                      </button>
-                  </div>`
-        document.getElementById('displayModal').style.display = 'none'
-        const reload = document.getElementById('Rbutton')
+const juego = new SwordSelector()
 
-        reload.addEventListener('click', function () {
-            window.location.reload();
+        // button.addEventListener('click', function () {
+        //     document.getElementById('displayModal').style.display = 'block'
+        // })
 
-        })
-    })
+        // closeBtn.addEventListener('click', function () {
+        //     document.getElementById('displayModal').style.display = 'none'
+        // })
 
+        // closeModal.addEventListener('click' , function() {
+        //     closeModal.style.display = 'none'
+        // })
 
-    otherSwordBtn.addEventListener('click', function () {
-        worldContainer.innerHTML = `<div id="swordcontainer">
-                 <h2>Esta es tu espada ideal</h2>
-                 <div id="swordSilhouette" class="image_container">
-                     <img src="${proSword}" alt="">
-                 </div>
-                 <div id="btn">           
-                     <button class="btn_style" id="Rbutton">
-                         Volver a elegir
-                     </button>
-                 </div>`
-
-        document.getElementById('displayModal').style.display = 'none'
-        const reload = document.getElementById('Rbutton')
-
-        reload.addEventListener('click', function () {
-            window.location.reload();
-
-        })
-    })
-
-    diamondbtn.addEventListener('click', function () {
-        worldContainer.innerHTML = `<div id="swordcontainer">
-                  <h2>Esta es tu espada ideal</h2>
-                  <div id="swordSilhouette" class="image_container">
-                      <img src="${diamontSword}" alt="">
-                  </div>
-                  <div id= class="btn-position" "btn">           
-                      <button class="btn_style" id="Rbutton">
-                          Volver a elegir
-                      </button>
-                  </div>`
-        document.getElementById('displayModal').style.display = 'none'
-        const reload = document.getElementById('Rbutton')
-
-        reload.addEventListener('click', function () {
-            window.location.reload();
-
-        })
-    })
-})()
